@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full guides · indiemurat</title>
+<meta name="description" content="The full step-by-step guides from my shorts: fix slow Wi-Fi, clean your TV, build a real Jarvis.">
+<style>
+  :root { --bg:#0e1116; --card:#171b22; --line:#262c36; --text:#e9edf2; --dim:#9aa4b2; --mint:#6ef2c5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:680px; margin:0 auto; padding:40px 16px 80px; }
+  h1 { font-size:30px; line-height:1.2; margin:0 0 8px; }
+  .lead { color:var(--dim); margin:0 0 24px; }
+  nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+  nav a { color:var(--bg); background:var(--mint); text-decoration:none; font-weight:700; padding:6px 12px; border-radius:999px; font-size:15px; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:24px; scroll-margin-top:16px; }
+  section:target { border-color:var(--mint); }
+  h2 { font-size:23px; margin:0 0 4px; }
+  .word { color:var(--mint); font-size:14px; font-weight:700; letter-spacing:.06em; margin:0 0 12px; }
+  h3 { font-size:17px; margin:20px 0 6px; }
+  ol, ul { padding-left:22px; margin:8px 0; }
+  li { margin:6px 0; }
+  code { font:15px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background:#0b0e12; padding:1px 5px; border-radius:5px; }
+  .copy { position:relative; background:#0b0e12; border:1px solid var(--line); border-radius:10px; padding:12px 12px 44px; margin:10px 0; font:15px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space:pre-wrap; word-break:break-word; }
+  .copy button { position:absolute; right:8px; bottom:8px; background:var(--mint); color:var(--bg); border:0; border-radius:8px; padding:6px 12px; font:700 14px -apple-system, sans-serif; cursor:pointer; }
+  a { color:var(--mint); }
+  .note { color:var(--dim); font-size:15px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>The full guides from my shorts</h1>
+  <p class="lead">Commented a word under a video? Here's the guide it unlocks. Find yours below.</p>
+  <nav>
+    <a href="#router">ROUTER</a>
+    <a href="#tv">TV</a>
+    <a href="#jarvis">JARVIS</a>
+  </nav>
+
+  <section id="router">
+    <h2>Fix slow Wi-Fi with one prompt</h2>
+    <p class="word">COMMENTED: ROUTER</p>
+    <ol>
+      <li>Open Claude Code on your computer (I used a Mac).</li>
+      <li>Paste this prompt:
+        <div class="copy">My Wi-Fi feels slow. Run read-only checks on this computer: signal strength, nearby networks and their channels, ping to the router and the internet, DNS speed, and lag under load. Then tell me the one fix that matters most.</div>
+      </li>
+      <li>Approve only the check commands. Mine took about 4 minutes.</li>
+      <li>What the usual fixes mean:
+        <ul>
+          <li><b>Weak signal</b> (around -70 dBm or worse): move closer to the router or use its 5 GHz network.</li>
+          <li><b>A neighbor on your channel:</b> open your router's settings (often <code>192.168.0.1</code> or <code>192.168.1.1</code>) and pick the empty channel Claude suggests.</li>
+          <li><b>Lag only when someone's downloading:</b> turn on Smart Queue or SQM in the router, if it has it.</li>
+          <li><b>Slow DNS:</b> switch to the faster server Claude found.</li>
+        </ul>
+      </li>
+      <li>Run the same prompt again and compare.</li>
+    </ol>
+  </section>
+
+  <section id="tv">
+    <h2>Clean your smart TV</h2>
+    <p class="word">COMMENTED: TV</p>
+    <p class="note">Works on Android TV and Google TV only (not Samsung, LG, Roku).</p>
+    <ol>
+      <li>On the TV: Settings → Device Preferences → About. Press OK on "Build" 7 times.</li>
+      <li>Go back → Developer options → turn on USB debugging. If you see Network or ADB debugging, turn that on too.</li>
+      <li>On your computer (same Wi-Fi as the TV), get the free project:
+        <div class="copy">git clone https://github.com/Gathin23/cleanyourtv</div>
+      </li>
+      <li>Open that folder in Claude Code (Codex or Gemini CLI work too).</li>
+      <li>Paste everything from <code>PROMPT.md</code> and add your TV model.</li>
+      <li>On the TV, accept "Allow USB debugging?"</li>
+      <li>Answer its questions: which apps you use, what to keep. Takes about 15 min.</li>
+    </ol>
+    <h3>Before you start</h3>
+    <ul>
+      <li>Your computer needs Python 3, Java (JDK 17–22) and Android SDK 34. Ask Claude Code to check what's missing.</li>
+      <li>Nothing gets deleted. Apps are only disabled, and you get a restore script.</li>
+      <li>Go in small batches. Some TVs got stuck rebooting.</li>
+      <li>When you're done, turn USB debugging (and network debugging) back OFF.</li>
+      <li>Claude Code needs a paid plan. There's also a manual way in the <a href="https://github.com/Gathin23/cleanyourtv">README</a>.</li>
+    </ul>
+  </section>
+
+  <section id="jarvis">
+    <h2>Set up a real Jarvis</h2>
+    <p class="word">COMMENTED: JARVIS</p>
+    <p class="note">You need a computer with Chrome or Edge.</p>
+    <ol>
+      <li>Install Claude Code and log in: run <code>claude</code> once in a terminal. It needs a Claude subscription.</li>
+      <li>Install Node.js 20 or newer from <a href="https://nodejs.org">nodejs.org</a>.</li>
+      <li>Get the free project:
+        <div class="copy">git clone https://github.com/adewaskar/jarvis</div>
+      </li>
+      <li>Open a terminal in that folder and run:
+        <div class="copy">npm install
+npm start</div>
+      </li>
+      <li>Open the address it prints (<code>http://localhost:5173</code>) in Chrome or Edge. A real browser window, not a preview pane.</li>
+      <li>Click INITIALISE, allow the microphone, and say "Hey Jarvis".</li>
+    </ol>
+    <h3>Good to know</h3>
+    <ul>
+      <li>No API keys. It runs on your Claude Code login, so usage counts toward your Claude plan.</li>
+      <li>Not sure you have everything? Run <code>npm run setup</code> in the folder and it checks for you.</li>
+      <li>Can't hear you? Press D for diagnostics, T for a sound test.</li>
+      <li>Space = talk without "Hey Jarvis". Just speak to interrupt it. Escape = stop.</li>
+      <li>Want a better voice? Add an ElevenLabs API key. Optional.</li>
+      <li>It starts read-only: it can search and generate, but it can't send, delete, install or pay.</li>
+      <li><code>npm start -- --writes</code> turns actions on. Then its shell can reach anything your account can, so read "Enabling actions" in the <a href="https://github.com/adewaskar/jarvis">README</a> first.</li>
+    </ul>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('.copy').forEach(box => {
+    const text = box.textContent;
+    const b = document.createElement('button');
+    b.textContent = 'Copy';
+    b.onclick = () => navigator.clipboard.writeText(text).then(() => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1500); });
+    box.appendChild(b);
+  });
+</script>
+</body>
+</html>
